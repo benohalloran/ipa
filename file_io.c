@@ -13,6 +13,7 @@
 #include <sys/resource.h>
 #include <errno.h>
 #include <signal.h>
+#include <limits.h>
 
 #include "ipa.h"
 #include "file_io.h"
@@ -39,7 +40,7 @@ size_t get_size_fd(int fd) {
 // Based on:
 // http://nion.modprobe.de/blog/archives/357-Recursive-directory-creation.html
 static int rmkdir(char *dir) {
-  char tmp[256];
+  char tmp[PATH_MAX];
   char *p = NULL;
   size_t len;
   errno = 0;
